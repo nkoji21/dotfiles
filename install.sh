@@ -41,7 +41,7 @@ echo "Creating symlinks..."
 # Create directories if not exist
 mkdir -p ~/.config/mise
 mkdir -p ~/.config/aqua
-mkdir -p ~/.config/ghostty
+mkdir -p ~/.config/ghostty/themes
 mkdir -p ~/.config/sheldon
 mkdir -p ~/.local/share/sheldon
 mkdir -p ~/.claude
@@ -62,6 +62,7 @@ ln -sf "$DOTFILES_DIR/aqua/aqua.yaml" ~/.config/aqua/aqua.yaml
 ln -sf "$DOTFILES_DIR/aqua/aqua-checksums.json" ~/.config/aqua/aqua-checksums.json
 ln -sf "$DOTFILES_DIR/aqua/imports" ~/.config/aqua/imports
 ln -sf "$DOTFILES_DIR/ghostty/config" ~/.config/ghostty/config
+ln -sf "$DOTFILES_DIR/ghostty/themes/kanagawa-wave" ~/.config/ghostty/themes/kanagawa-wave
 ln -sf "$DOTFILES_DIR/sheldon/plugins.toml" ~/.config/sheldon/plugins.toml
 ln -sf "$DOTFILES_DIR/sheldon/plugins.lock" ~/.local/share/sheldon/plugins.lock
 
