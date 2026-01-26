@@ -14,14 +14,14 @@ window-width = 105
 unfocused-split-opacity = 0.5
 
 # Background
-background-opacity = 0.75
+background-opacity = 0.9
 background-blur = true
 
 # Image
 background-image = /usr/local/share/ghostty/backgrounds/yui.png
 background-image-fit = cover
 background-image-position = center
-background-image-opacity = 0.25
+background-image-opacity = 0.1
 
 # Cursor
 cursor-opacity = 0.7
