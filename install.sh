@@ -47,24 +47,24 @@ mkdir -p ~/.local/share/sheldon
 mkdir -p ~/.claude
 
 # Symlink home directory files
-ln -sf "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
-ln -sf "$DOTFILES_DIR/.zshenv" ~/.zshenv
-ln -sf "$DOTFILES_DIR/.zshrc" ~/.zshrc
-ln -sf "$DOTFILES_DIR/.zprofile" ~/.zprofile
+ln -sfn "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
+ln -sfn "$DOTFILES_DIR/.zshenv" ~/.zshenv
+ln -sfn "$DOTFILES_DIR/.zshrc" ~/.zshrc
+ln -sfn "$DOTFILES_DIR/.zprofile" ~/.zprofile
 
 # Symlink .claude files
-ln -sf "$DOTFILES_DIR/.claude/CLAUDE.md" ~/.claude/CLAUDE.md
-ln -sf "$DOTFILES_DIR/.claude/commands" ~/.claude/commands
+ln -sfn "$DOTFILES_DIR/.claude/CLAUDE.md" ~/.claude/CLAUDE.md
+ln -sfn "$DOTFILES_DIR/.claude/commands" ~/.claude/commands
 
 # Symlink .config subdirectories
-ln -sf "$DOTFILES_DIR/mise/config.toml" ~/.config/mise/config.toml
-ln -sf "$DOTFILES_DIR/aqua/aqua.yaml" ~/.config/aqua/aqua.yaml
-ln -sf "$DOTFILES_DIR/aqua/aqua-checksums.json" ~/.config/aqua/aqua-checksums.json
-ln -sf "$DOTFILES_DIR/aqua/imports" ~/.config/aqua/imports
-ln -sf "$DOTFILES_DIR/ghostty/config" ~/.config/ghostty/config
-ln -sf "$DOTFILES_DIR/ghostty/themes/kanagawa-wave" ~/.config/ghostty/themes/kanagawa-wave
-ln -sf "$DOTFILES_DIR/sheldon/plugins.toml" ~/.config/sheldon/plugins.toml
-ln -sf "$DOTFILES_DIR/sheldon/plugins.lock" ~/.local/share/sheldon/plugins.lock
+ln -sfn "$DOTFILES_DIR/mise/config.toml" ~/.config/mise/config.toml
+ln -sfn "$DOTFILES_DIR/aqua/aqua.yaml" ~/.config/aqua/aqua.yaml
+ln -sfn "$DOTFILES_DIR/aqua/aqua-checksums.json" ~/.config/aqua/aqua-checksums.json
+ln -sfn "$DOTFILES_DIR/aqua/imports" ~/.config/aqua/imports
+ln -sfn "$DOTFILES_DIR/ghostty/config" ~/.config/ghostty/config
+ln -sfn "$DOTFILES_DIR/ghostty/themes/kanagawa-wave" ~/.config/ghostty/themes/kanagawa-wave
+ln -sfn "$DOTFILES_DIR/sheldon/plugins.toml" ~/.config/sheldon/plugins.toml
+ln -sfn "$DOTFILES_DIR/sheldon/plugins.lock" ~/.local/share/sheldon/plugins.lock
 
 echo "✓ Symlinks created"
 
