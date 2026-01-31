@@ -46,6 +46,9 @@ alias ojt='oj t -c "go run main.go"'
 alias repo='ghq-fzf-widget'
 alias repov='ghq-fzf-view'
 
+# wine
+alias BlueArchive='wine ~/.wine/drive_c/YostarGames/BlueArchive_JP_Gamelauncher/BlueArchive_JP_Gamelauncher.exe'
+
 # ===== 関数 =====
 
 # ghq + fzf
