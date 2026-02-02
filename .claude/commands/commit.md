@@ -7,10 +7,10 @@ Review current changes and create a commit following Conventional Commits.
 ---
 name: commit
 description: 変更をコミット（日本語、Conventional Commits準拠）
----
+--
 
-Review current changes and create a commit following Conventional Commits.
-**Important**: Propose the message only. Do not run `git commit` unless the user explicitly requests execution.
+Review current changes and **propose** a commit message following Conventional Commits.
+Do not run `git commit` unless the user explicitly requests execution.
 
 ## Principle
 - Write **Why** (why the change was made) in the commit message. Leave What to the diff.
