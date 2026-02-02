@@ -18,7 +18,7 @@ background-opacity = 0.9
 background-blur = true
 
 # Image
-background-image = /usr/local/share/ghostty/backgrounds/yui.png
+background-image = /usr/local/share/ghostty/backgrounds/1.jpeg
 background-image-fit = cover
 background-image-position = center
 background-image-opacity = 0.1
