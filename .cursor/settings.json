@@ -13,7 +13,7 @@
   "workbench.sideBar.location": "right",
   "workbench.editor.editorActionsLocation": "hidden",
   "workbench.layoutControl.enabled": false,
-  "breadcrumbs.enabled": false,
+  "breadcrumbs.enabled": true,
   "window.titleBarStyle": "custom",
 
   // ==============================

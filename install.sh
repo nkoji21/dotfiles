@@ -51,6 +51,7 @@ ln -sfn "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
 ln -sfn "$DOTFILES_DIR/.zshenv" ~/.zshenv
 ln -sfn "$DOTFILES_DIR/.zshrc" ~/.zshrc
 ln -sfn "$DOTFILES_DIR/.zprofile" ~/.zprofile
+ln -sfn "$DOTFILES_DIR/.cursor/settings.json" "$HOME/Library/Application Support/Cursor/User/settings.json"
 
 # Symlink .claude files
 ln -sfn "$DOTFILES_DIR/.claude/CLAUDE.md" ~/.claude/CLAUDE.md
