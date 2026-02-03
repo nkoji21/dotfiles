@@ -1,0 +1,73 @@
+{
+  // ==============================
+  // Git
+  // ==============================
+  "git.autofetch": true,
+  "git.confirmSync": false,
+
+  // ==============================
+  // Workbench / UI
+  // ==============================
+  "workbench.colorTheme": "Kanagawa Wave",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.sideBar.location": "right",
+  "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.layoutControl.enabled": false,
+  "breadcrumbs.enabled": false,
+  "window.titleBarStyle": "custom",
+
+  // ==============================
+  // Editor
+  // ==============================
+  "editor.detectIndentation": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.renderWhitespace": "none",
+  "editor.renderControlCharacters": false,
+  "editor.stickyScroll.enabled": false,
+
+  // ==============================
+  // Languages
+  // ==============================
+  "[c]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "editor.defaultFormatter": "keyhr.42-c-format"
+  },
+
+  // ==============================
+  // Extensions
+  // ==============================
+  // 42Tokyo - 42Header
+  "42header.username": "nkojima",
+  "42header.email": "nkojima@student.42tokyo.jp",
+  "markdown-mermaid.darkModeTheme": "neutral",
+  "markdown-mermaid.lightModeTheme": "neutral",
+  "cursor.cpp.disabledLanguages": ["markdown", "plaintext"],
+  "redhat.telemetry.enabled": true,
+  "extensions.ignoreRecommendations": true,
+
+  // background - image
+  "background.fullscreen": {
+    "images": [
+      "/usr/local/share/ghostty/backgrounds/1.jpeg",
+      "/usr/local/share/ghostty/backgrounds/2.png"
+    ],
+    "opacity": 0.1,
+    "size": "cover",
+    "position": "center",
+    "interval": 0,
+    "random": true
+  },
+
+  // background - opacity
+  "workbench.colorCustomizations": {
+    "terminal.background": "#00000000"
+  },
+  "terminal.integrated.gpuAcceleration": "off",
+  "window.systemColorTheme": "dark",
+  "window.autoDetectColorScheme": false
+}
