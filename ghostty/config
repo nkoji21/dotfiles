@@ -1,7 +1,7 @@
 # Theme & Font
 theme = kanagawa-wave
 font-family = Hack Nerd Font Mono
-font-size = 20
+font-size = 14
 font-thicken = true
 adjust-cell-height = 8%
 
@@ -9,19 +9,19 @@ adjust-cell-height = 8%
 window-padding-x = 20
 window-padding-y = 36
 window-padding-balance
-window-height = 27
-window-width = 105
+window-height = 40
+window-width = 120
 unfocused-split-opacity = 0.5
 
 # Background
-background-opacity = 0.9
+background-opacity = 0.95
 background-blur = true
 
 # Image
-background-image = /usr/local/share/ghostty/backgrounds/1.jpeg
+background-image = /usr/local/share/ghostty/backgrounds/3.jpg
 background-image-fit = cover
 background-image-position = center
-background-image-opacity = 0.1
+background-image-opacity = 0.07
 
 # Cursor
 cursor-opacity = 0.7
