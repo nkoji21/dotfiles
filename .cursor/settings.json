@@ -11,9 +11,8 @@
   "workbench.colorTheme": "Kanagawa Wave",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "right",
-  "workbench.editor.editorActionsLocation": "hidden",
   "workbench.layoutControl.enabled": false,
-  "breadcrumbs.enabled": true,
+  "breadcrumbs.enabled": false,
   "window.titleBarStyle": "custom",
 
   // ==============================
@@ -54,16 +53,15 @@
   "background.fullscreen": {
     "images": [
       "/usr/local/share/ghostty/backgrounds/1.jpeg",
-      "/usr/local/share/ghostty/backgrounds/2.png"
+      "/usr/local/share/ghostty/backgrounds/2.png",
+      "/usr/local/share/ghostty/backgrounds/3.jpg"
     ],
-    "opacity": 0.1,
-    "size": "cover",
-    "position": "center",
-    "interval": 0,
+    "opacity": 0.03,
     "random": true
   },
 
   // background - opacity
+  "vscode_vibrancy.opacity": "0.7",
   "workbench.colorCustomizations": {
     "terminal.background": "#00000000"
   },
