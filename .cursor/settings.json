@@ -50,13 +50,17 @@
   "extensions.ignoreRecommendations": true,
 
   // background - image
+  "background.enabled": true,
   "background.fullscreen": {
     "images": [
       "/usr/local/share/ghostty/backgrounds/1.jpeg",
       "/usr/local/share/ghostty/backgrounds/2.png",
-      "/usr/local/share/ghostty/backgrounds/3.jpg"
+      "/usr/local/share/ghostty/backgrounds/3.jpg",
+      "/usr/local/share/ghostty/backgrounds/4.png",
+      "/usr/local/share/ghostty/backgrounds/5.png",
+      "/usr/local/share/ghostty/backgrounds/6.png"
     ],
-    "opacity": 0.03,
+    "opacity": 0.05,
     "random": true
   },
 
