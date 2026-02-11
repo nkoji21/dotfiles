@@ -54,6 +54,7 @@ alias BlueArchive='wine ~/.wine/drive_c/YostarGames/BlueArchive_JP_Gamelauncher/
 # ghq + fzf
 ghq-fzf-select() {
     ghq list | fzf \
+        --exact \
         --reverse \
         --ansi \
         --preview-window=right:50%:wrap \
