@@ -10,6 +10,13 @@ precmd() {
         unset CURRENT_BRANCH_TEXT
     fi
 
+    # Devbox環境を表示
+    if [ "${DEVBOX_SHELL_ENABLED:-}" = "1" ]; then
+        DEVBOX_TEXT="%F{cyan}📦%f"
+    else
+        DEVBOX_TEXT=""
+    fi
+
     # Python仮想環境名を取得して表示
     if [ -n "$VIRTUAL_ENV" ]; then
         VENV_NAME=$(basename "$VIRTUAL_ENV")
@@ -18,8 +25,8 @@ precmd() {
         VENV_TEXT=""
     fi
 
-    # プロンプト: (venv) user: ~/path (branch)
-    PS1="$VENV_TEXT%F{green}%n%f: %F{magenta}%~%f$CURRENT_BRANCH_TEXT"$'\n'"%# "
+    # プロンプト: 📦 (venv) user: ~/path (branch)
+    PS1="$DEVBOX_TEXT$VENV_TEXT%F{green}%n%f: %F{magenta}%~%f$CURRENT_BRANCH_TEXT"$'\n'"%# "
 }
 
 # ===== エイリアス =====
