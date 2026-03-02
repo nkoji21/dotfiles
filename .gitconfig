@@ -11,3 +11,6 @@
 	la = log --oneline --decorate --graph --branches --tags --remotes --all
 	gone = "!git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
 	aliases = !git config --get-regexp alias | sed 's/^alias.//g' | sed 's/ / = /1'
+
+[fetch]
+	prune = true
