@@ -57,7 +57,9 @@
       "/usr/local/share/ghostty/backgrounds/4.png",
       "/usr/local/share/ghostty/backgrounds/5.png",
       "/usr/local/share/ghostty/backgrounds/6.png",
-      "/usr/local/share/ghostty/backgrounds/7.png"
+      "/usr/local/share/ghostty/backgrounds/7.png",
+      "/usr/local/share/ghostty/backgrounds/8.png",
+      "/usr/local/share/ghostty/backgrounds/9.jpg",
     ],
     "opacity": 0.07,
     "random": true
@@ -69,7 +71,6 @@
     "terminal.background": "#00000000"
   },
   "workbench.panel.showLabels": false,
-  "breadcrumbs.enabled": false,
   "terminal.integrated.gpuAcceleration": "off",
   "window.systemColorTheme": "dark",
   "window.autoDetectColorScheme": false
