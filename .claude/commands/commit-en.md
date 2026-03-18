@@ -3,7 +3,8 @@ name: commit-en
 description: 変更をコミット（英語、Conventional Commits準拠）
 ---
 
-Review current changes and create a commit following Conventional Commits.
+Review current changes and **propose** a commit message following Conventional Commits.
+Do not run `git commit` unless the user explicitly requests execution.
 
 ## Commit Granularity
 - 1 commit = 1 logical change
