@@ -18,4 +18,3 @@ Otherwise, use the format below.
 
 ## Notes
 レビュー時の注意点（不要なら削除）
-
