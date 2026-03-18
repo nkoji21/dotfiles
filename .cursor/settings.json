@@ -33,7 +33,7 @@
     "editor.insertSpaces": false,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
-    "editor.defaultFormatter": "keyhr.42-c-format"
+    "editor.defaultFormatter": "xaver.clang-format"
   },
 
   // ==============================
@@ -74,5 +74,10 @@
   "zig.zls.enabled": "on",
   "terminal.integrated.gpuAcceleration": "off",
   "window.systemColorTheme": "dark",
-  "window.autoDetectColorScheme": false
+  "window.autoDetectColorScheme": false,
+  "cursor.cpp.disabledLanguages": [
+    "markdown",
+    "plaintext",
+    "c"
+  ]
 }
