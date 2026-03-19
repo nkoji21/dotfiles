@@ -11,4 +11,3 @@ Naming convention:
 - Examples: feat/user-auth, fix/login-error, refactor/api-client
 
 Create the selected branch.
-

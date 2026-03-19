@@ -44,7 +44,7 @@ mkdir -p ~/.config/aqua
 mkdir -p ~/.config/ghostty/themes
 mkdir -p ~/.config/sheldon
 mkdir -p ~/.local/share/sheldon
-mkdir -p ~/.claude
+mkdir -p ~/.cursor
 
 # Symlink home directory files
 ln -sfn "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
@@ -53,9 +53,10 @@ ln -sfn "$DOTFILES_DIR/.zshrc" ~/.zshrc
 ln -sfn "$DOTFILES_DIR/.zprofile" ~/.zprofile
 ln -sfn "$DOTFILES_DIR/.cursor/settings.json" "$HOME/Library/Application Support/Cursor/User/settings.json"
 
-# Symlink .claude files
-ln -sfn "$DOTFILES_DIR/.claude/CLAUDE.md" ~/.claude/CLAUDE.md
-ln -sfn "$DOTFILES_DIR/.claude/commands" ~/.claude/commands
+# Symlink .cursor files
+ln -sfn "$DOTFILES_DIR/.cursor/commands" ~/.cursor/commands
+ln -sfn "$DOTFILES_DIR/.cursor/rules" ~/.cursor/rules
+ln -sfn "$DOTFILES_DIR/.cursor/skills" ~/.cursor/skills
 
 # Symlink .config subdirectories
 ln -sfn "$DOTFILES_DIR/mise/config.toml" ~/.config/mise/config.toml

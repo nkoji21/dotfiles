@@ -1,3 +1,8 @@
+---
+description: Communication style and conventions for responses
+alwaysApply: true
+---
+
 # Communication Style
 
 - Japanese responses (code in English)
@@ -11,4 +16,3 @@
 # Conventions
 
 See `/commit`, `/commit-en`, `/pr`, `/branch` for details.
-

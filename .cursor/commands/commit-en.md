@@ -6,6 +6,9 @@ description: 変更をコミット（英語、Conventional Commits準拠）
 Review current changes and **propose** a commit message following Conventional Commits.
 Do not run `git commit` unless the user explicitly requests execution.
 
+## Principle
+- Write **Why** (why the change was made) in the commit message. Leave What to the diff.
+
 ## Commit Granularity
 - 1 commit = 1 logical change
 - Separate refactoring and feature additions
@@ -27,10 +30,11 @@ Types:
 - `refactor`: code change without bug fix or feature
 - `perf`: performance improvement
 - `test`: add/update tests
-- `chore`: build process, configs
+- `build`: build system, dependencies
+- `chore`: other configs, tooling
 - `ci`: CI configuration
 
 Required footer:
 ```
-Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+Co-Authored-By: Cursor Agent <cursoragent@cursor.com>
 ```
