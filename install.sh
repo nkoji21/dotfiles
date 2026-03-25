@@ -63,8 +63,11 @@ ln -sfn "$DOTFILES_DIR/.cursor/skills" ~/.cursor/skills
 # Symlink .claude files
 ln -sfn "$DOTFILES_DIR/.claude/skills" ~/.claude/skills
 
-# Symlink .codex files
-ln -sfn "$DOTFILES_DIR/.codex/skills" ~/.codex/skills
+# Symlink .codex skills individually (cannot symlink the whole dir as ~/.codex is managed by Codex)
+for skill_dir in "$DOTFILES_DIR/.agents/skills"/*/; do
+    skill_name=$(basename "$skill_dir")
+    ln -sfn "$skill_dir" ~/.codex/skills/"$skill_name"
+done
 
 # Symlink .config subdirectories
 ln -sfn "$DOTFILES_DIR/mise/config.toml" ~/.config/mise/config.toml
