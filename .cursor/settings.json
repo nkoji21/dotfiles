@@ -72,12 +72,12 @@
   },
   "workbench.panel.showLabels": false,
   "zig.zls.enabled": "on",
-  "terminal.integrated.gpuAcceleration": "off",
-  "window.systemColorTheme": "dark",
-  "window.autoDetectColorScheme": false,
   "cursor.cpp.disabledLanguages": [
     "markdown",
     "plaintext",
     "c"
-  ]
+  ],
+  "terminal.integrated.gpuAcceleration": "off",
+  "window.systemColorTheme": "dark",
+  "window.autoDetectColorScheme": false
 }
