@@ -45,6 +45,8 @@ mkdir -p ~/.config/ghostty/themes
 mkdir -p ~/.config/sheldon
 mkdir -p ~/.local/share/sheldon
 mkdir -p ~/.cursor
+mkdir -p ~/.claude
+mkdir -p ~/.codex
 
 # Symlink home directory files
 ln -sfn "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
@@ -57,6 +59,15 @@ ln -sfn "$DOTFILES_DIR/.cursor/settings.json" "$HOME/Library/Application Support
 ln -sfn "$DOTFILES_DIR/.cursor/commands" ~/.cursor/commands
 ln -sfn "$DOTFILES_DIR/.cursor/rules" ~/.cursor/rules
 ln -sfn "$DOTFILES_DIR/.cursor/skills" ~/.cursor/skills
+
+# Symlink .claude files
+ln -sfn "$DOTFILES_DIR/.claude/skills" ~/.claude/skills
+
+# Symlink .codex skills individually (cannot symlink the whole dir as ~/.codex is managed by Codex)
+for skill_dir in "$DOTFILES_DIR/.agents/skills"/*/; do
+    skill_name=$(basename "$skill_dir")
+    ln -sfn "$skill_dir" ~/.codex/skills/"$skill_name"
+done
 
 # Symlink .config subdirectories
 ln -sfn "$DOTFILES_DIR/mise/config.toml" ~/.config/mise/config.toml
