@@ -24,8 +24,13 @@ Capture the current HEAD sha before committing:
 BEFORE_SHA=$(git -C $WORKTREE_PATH rev-parse HEAD)
 ```
 
+Before invoking the skill, change directory into the worktree:
+```
+cd $WORKTREE_PATH
+```
+
 Use the Skill tool to invoke the `git-commit` skill.
-Note: git-commit reads `git status` and `git diff` from the current working directory. Run it from inside the worktree or ensure the skill operates in `WORKTREE_PATH`.
+Note: git-commit reads `git status` and `git diff` from the current working directory. It must be run from inside `WORKTREE_PATH`.
 
 After the skill completes, check whether a commit was made:
 ```
@@ -40,7 +45,12 @@ Inform the user that there was nothing to commit.
 
 ## Phase 3: Open PR
 
-Use the Skill tool to invoke the `git-pr` skill (run from inside `WORKTREE_PATH`).
+Change directory into the worktree, then invoke the `git-pr` skill:
+```
+cd $WORKTREE_PATH
+```
+
+Use the Skill tool to invoke the `git-pr` skill.
 
 After the skill completes, capture the PR URL:
 ```
