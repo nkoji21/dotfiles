@@ -1,6 +1,6 @@
 ---
 name: git-worktree
-description: 変更内容をもとにブランチ名を決定し、/tmp 配下に git worktree を作成して変更ファイルをコピーする
+description: Determine a branch name from changes, create a git worktree under /tmp, and copy changed files into it
 user-invocable: true
 allowed-tools: Bash
 ---

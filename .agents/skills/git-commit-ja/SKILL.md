@@ -1,6 +1,6 @@
 ---
 name: git-commit-ja
-description: 変更内容を確認して自律的にコミット（日本語）
+description: Review changes and autonomously commit (Japanese)
 user-invocable: true
 ---
 
