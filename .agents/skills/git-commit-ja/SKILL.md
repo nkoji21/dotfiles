@@ -4,6 +4,9 @@ description: 変更内容を確認して自律的にコミット（日本語）
 user-invocable: true
 ---
 
+<!-- Intentional duplication of git-commit. Only the commit message language differs.
+     When updating logic here, apply the same change to git-commit/SKILL.md as well. -->
+
 Review current changes and autonomously commit following Conventional Commits.
 
 1. Run `git status`, `git diff`, and `git log --oneline -5` to understand the changes and context
