@@ -44,7 +44,7 @@ Use the Skill tool to invoke the `git-pr` skill (run from inside `WORKTREE_PATH`
 
 After the skill completes, capture the PR URL:
 ```
-gh pr view --json url --jq '.url'
+cd $WORKTREE_PATH && gh pr view --json url --jq '.url'
 ```
 
 If `gh pr create` failed because a PR already exists, retrieve the existing PR URL with the same command.
@@ -86,12 +86,12 @@ Format findings as a markdown list. Each item: severity label (`must-fix` / `sug
   - Read each flagged file before editing. Fix each `must-fix` issue.
   - Capture HEAD sha before invoking git-commit:
     ```
-    FIX_BEFORE=$(git rev-parse HEAD)
+    FIX_BEFORE=$(git -C $WORKTREE_PATH rev-parse HEAD)
     ```
   - Use the Skill tool to invoke `git-commit` to commit the fixes.
   - Check if the commit actually happened:
     ```
-    FIX_AFTER=$(git rev-parse HEAD)
+    FIX_AFTER=$(git -C $WORKTREE_PATH rev-parse HEAD)
     ```
   - If `FIX_BEFORE == FIX_AFTER` (nothing was committed): post a comment explaining the fix could not be committed, then stop. Do NOT loop.
   - Increment iteration count and return to step 4a.
