@@ -111,6 +111,11 @@ gh pr comment <PR_URL> --body "[AI-generated LGTM by Claude Code]
 No must-fix issues found. Proceeding to auto-merge."
 ```
 
+Mark the PR as ready for review (required before merging a draft PR):
+```
+gh pr ready <PR_URL>
+```
+
 Trigger squash merge:
 ```
 gh pr merge <PR_URL> --squash --auto
