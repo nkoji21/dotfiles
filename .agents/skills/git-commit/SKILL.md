@@ -1,10 +1,14 @@
 ---
 name: git-commit
-description: 変更内容を確認して自律的にコミット（英語）
+description: Review changes and autonomously commit (English)
 user-invocable: true
 ---
 
 Review current changes and autonomously commit following Conventional Commits.
+
+## Arguments
+
+If a `--path <dir>` argument is provided (e.g. invoked as `git-commit --path /tmp/feat-foo`), all git commands must be run inside that directory by prepending `cd <dir> &&` to every Bash command. This overrides the current working directory.
 
 1. Run `git status`, `git diff`, and `git log --oneline -5` to understand the changes and context
 2. Decide the commit message autonomously

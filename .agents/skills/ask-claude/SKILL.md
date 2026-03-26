@@ -1,6 +1,6 @@
 ---
 name: ask-claude
-description: 別の Claude インスタンスにセカンドオピニオンを求める
+description: Ask another Claude instance for a second opinion
 user-invocable: true
 ---
 
