@@ -7,6 +7,13 @@ allowed-tools: Bash, Skill, Agent
 
 Orchestrate the full pull request workflow from staged changes to squash-merged PR.
 
+**Current branch:** `!`git branch --show-current``
+
+**Working tree status:**
+```
+!`git status --short`
+```
+
 ## Phase 1: Worktree
 
 Use the Skill tool to invoke the `git-worktree` skill.

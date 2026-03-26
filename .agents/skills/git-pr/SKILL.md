@@ -6,6 +6,18 @@ user-invocable: true
 
 Review current branch changes and autonomously create a PR as draft.
 
+**Current branch:** `!`git branch --show-current``
+
+**Commits since main:**
+```
+!`git log --oneline main..HEAD`
+```
+
+**Diff stat:**
+```
+!`git diff --stat main...HEAD`
+```
+
 ## Arguments
 
 If a `--path <dir>` argument is provided (e.g. invoked as `git-pr --path /tmp/feat-foo`), all git and gh commands must be run inside that directory by prepending `cd <dir> &&` to every Bash command. This overrides the current working directory.

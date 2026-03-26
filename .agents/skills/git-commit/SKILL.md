@@ -6,6 +6,16 @@ user-invocable: true
 
 Review current changes and autonomously commit following Conventional Commits.
 
+**Working tree status:**
+```
+!`git status --short`
+```
+
+**Diff stat:**
+```
+!`git diff --stat`
+```
+
 ## Arguments
 
 If a `--path <dir>` argument is provided (e.g. invoked as `git-commit --path /tmp/feat-foo`), all git commands must be run inside that directory by prepending `cd <dir> &&` to every Bash command. This overrides the current working directory.
