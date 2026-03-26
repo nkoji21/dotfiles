@@ -1,7 +1,8 @@
 ---
 name: fix-ci
-description: CIの失敗を自動診断して修正する。gh CLIでGitHub Actionsのログをフェッチしてエラーを解析・修正。
+description: Auto-diagnose and fix CI failures by fetching GitHub Actions logs via gh CLI and resolving errors.
 user-invocable: true
+allowed-tools: Bash, Skill
 ---
 
 Let's fix whatever error we can find in CI using the `gh` CLI.
@@ -21,4 +22,4 @@ Let's fix whatever error we can find in CI using the `gh` CLI.
 3. Fetch the logs for the broken action using `gh run view <run-id> --log-failed`
 4. Make a quick plan on what needs to be fixed
 5. Fix the error
-6. Commit the fix using `/git-commit`
+6. Commit the fix using the Skill tool to invoke `git-commit`

@@ -1,6 +1,6 @@
 ---
 name: git-pr
-description: ブランチの変更を確認して自律的にPRを作成（英語）
+description: Review branch changes and autonomously open a PR (English)
 user-invocable: true
 ---
 

@@ -11,6 +11,7 @@ Orchestrate the full pull request workflow from staged changes to squash-merged 
 
 Use the Skill tool to invoke the `git-worktree` skill.
 
+
 It will return a worktree path (e.g. `/tmp/feat-foo`) and a branch name. Store both:
 - `WORKTREE_PATH` — absolute path to the worktree
 - `BRANCH_NAME` — the branch created inside the worktree
