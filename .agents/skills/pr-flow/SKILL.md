@@ -40,6 +40,7 @@ If `BEFORE_SHA == AFTER_SHA`, clean up the worktree and stop:
 ```
 git worktree remove --force $WORKTREE_PATH
 ```
+Note: `--force` discards any uncommitted state in the worktree (e.g. `patch.diff` created by git-commit). This is intentional — the source repo's working tree is untouched.
 Inform the user that there was nothing to commit, and that their original changes remain in the source repo untouched.
 
 ## Phase 3: Open PR
@@ -48,7 +49,7 @@ Use the Skill tool to invoke the `git-pr` skill with args `--path $WORKTREE_PATH
 
 After the skill completes, capture the PR URL:
 ```
-cd $WORKTREE_PATH && gh pr view --json url --jq '.url'
+gh -C $WORKTREE_PATH pr view --json url --jq '.url'
 ```
 
 If `gh pr create` failed because a PR already exists, retrieve the existing PR URL with the same command.
@@ -57,7 +58,7 @@ Store this URL — you will use it in every subsequent `gh pr comment` and `gh p
 
 ## Phase 4: Review Loop
 
-You may run this loop at most **3 times**. Track the iteration count starting at 0.
+You may apply fixes at most **3 times**. Track the iteration count starting at 0. The reviewer subagent is invoked once per iteration, so it runs up to 4 times total (3 fix iterations + 1 final review).
 
 ### 4a. Launch reviewer subagent
 
@@ -102,7 +103,7 @@ Format findings as a markdown list. Each item: severity label (`must-fix` / `sug
 - **`must-fix` issues exist AND iteration == 3**:
   - Post comment:
     ```
-    gh pr comment <PR_URL> --body "[AI-generated review by Claude Code] Reached maximum auto-fix iterations (3). Remaining must-fix issues require manual attention."
+    gh pr comment <PR_URL> --body "[AI-generated review by Claude Code] Reached maximum auto-fix iterations (3 fix attempts). Remaining must-fix issues require manual attention."
     ```
   - Clean up the worktree:
     ```
