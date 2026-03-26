@@ -7,16 +7,10 @@ allowed-tools: Bash, Skill, Agent
 
 Orchestrate the full pull request workflow from staged changes to squash-merged PR.
 
-**Current branch:** `!`git branch --show-current``
-
-**Working tree status:**
-```
-!`git status --short`
-```
-
 ## Phase 1: Worktree
 
 Use the Skill tool to invoke the `git-worktree` skill.
+
 
 It will return a worktree path (e.g. `/tmp/feat-foo`) and a branch name. Store both:
 - `WORKTREE_PATH` — absolute path to the worktree
@@ -48,7 +42,7 @@ Use the Skill tool to invoke the `git-pr` skill with args `--path $WORKTREE_PATH
 
 After the skill completes, capture the PR URL:
 ```
-gh -C $WORKTREE_PATH pr view --json url --jq '.url'
+cd $WORKTREE_PATH && gh pr view --json url --jq '.url'
 ```
 
 If `gh pr create` failed because a PR already exists, retrieve the existing PR URL with the same command.

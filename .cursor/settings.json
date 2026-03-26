@@ -79,5 +79,8 @@
   ],
   "terminal.integrated.gpuAcceleration": "off",
   "window.systemColorTheme": "dark",
-  "window.autoDetectColorScheme": false
+  "window.autoDetectColorScheme": false,
+  "accessibility.signals.terminalBell": {
+    "sound": "on"
+  }
 }
