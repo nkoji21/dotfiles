@@ -22,8 +22,8 @@ Create a git worktree for the current changes so they can be worked on in isolat
 
 4. Copy all modified/untracked files from the current working directory into the worktree, preserving directory structure:
    ```
-   # For each changed file shown in git status:
-   cp --parents {file} /tmp/{branch-name}/
+   # For each changed file shown in git status (macOS-compatible):
+   rsync -R {file} /tmp/{branch-name}/
    ```
 
 5. Report the worktree path and branch name to the caller.
