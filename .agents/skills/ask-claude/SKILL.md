@@ -2,6 +2,7 @@
 name: ask-claude
 description: Ask another Claude instance for a second opinion
 user-invocable: true
+allowed-tools: Bash
 ---
 
 Ask a separate Claude instance for an independent second opinion on the current problem or decision.

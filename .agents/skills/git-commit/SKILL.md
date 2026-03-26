@@ -2,6 +2,7 @@
 name: git-commit
 description: Review changes and autonomously commit (English)
 user-invocable: true
+allowed-tools: Bash
 ---
 
 Review current changes and autonomously commit following Conventional Commits.

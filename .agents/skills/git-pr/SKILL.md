@@ -2,6 +2,7 @@
 name: git-pr
 description: Review branch changes and autonomously open a PR (English)
 user-invocable: true
+allowed-tools: Bash
 ---
 
 Review current branch changes and autonomously create a PR as draft.

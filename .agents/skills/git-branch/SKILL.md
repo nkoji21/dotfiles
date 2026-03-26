@@ -2,6 +2,7 @@
 name: git-branch
 description: Review changes and create a branch
 user-invocable: true
+allowed-tools: Bash
 ---
 
 Review the current state and create an appropriate branch.
