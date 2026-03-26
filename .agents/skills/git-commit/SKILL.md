@@ -7,12 +7,12 @@ allowed-tools: Bash
 
 Review current changes and autonomously commit following Conventional Commits.
 
-**Working tree status:**
+**Working tree status (source repo):**
 ```
 !`git status --short`
 ```
 
-**Diff stat:**
+**Diff stat (source repo):**
 ```
 !`git diff --stat HEAD`
 ```

@@ -7,14 +7,14 @@ allowed-tools: Bash
 
 Review current branch changes and autonomously create a PR as draft.
 
-**Current branch:** `!`git branch --show-current``
+**Current branch (source repo):** `!`git branch --show-current``
 
-**Commits since main:**
+**Commits since main (source repo):**
 ```
 !`git log --oneline main..HEAD`
 ```
 
-**Diff stat:**
+**Diff stat (source repo):**
 ```
 !`git diff --stat main..HEAD`
 ```
