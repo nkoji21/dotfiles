@@ -13,7 +13,7 @@ Review current changes and autonomously commit following Conventional Commits.
 
 **Diff stat:**
 ```
-!`git diff --stat`
+!`git diff --stat HEAD`
 ```
 
 ## Arguments

@@ -110,10 +110,6 @@ Format findings as a markdown list. Each item: severity label (`must-fix` / `sug
     ```
     git worktree remove --force $WORKTREE_PATH
     ```
-  - Clean up the worktree:
-    ```
-    git worktree remove --force $WORKTREE_PATH
-    ```
   - Stop. Do NOT proceed to merge.
 
 ## Phase 5: LGTM + Merge
