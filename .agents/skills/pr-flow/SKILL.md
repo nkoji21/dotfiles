@@ -48,7 +48,7 @@ Use the Skill tool to invoke the `git-pr` skill with args `--path $WORKTREE_PATH
 
 After the skill completes, capture the PR URL:
 ```
-cd $WORKTREE_PATH && gh pr view --json url --jq '.url'
+gh -C $WORKTREE_PATH pr view --json url --jq '.url'
 ```
 
 If `gh pr create` failed because a PR already exists, retrieve the existing PR URL with the same command.
