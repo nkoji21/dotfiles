@@ -7,16 +7,10 @@ allowed-tools: Bash, Skill, Agent
 
 Orchestrate the full pull request workflow from staged changes to squash-merged PR.
 
-**Current branch:** `!`git branch --show-current``
-
-**Working tree status:**
-```
-!`git status --short`
-```
-
 ## Phase 1: Worktree
 
 Use the Skill tool to invoke the `git-worktree` skill.
+
 
 It will return a worktree path (e.g. `/tmp/feat-foo`) and a branch name. Store both:
 - `WORKTREE_PATH` — absolute path to the worktree
@@ -104,6 +98,10 @@ Format findings as a markdown list. Each item: severity label (`must-fix` / `sug
   - Post comment:
     ```
     gh pr comment $PR_URL --body "[AI-generated review by Claude Code] Reached maximum auto-fix iterations (3 fix attempts). Remaining must-fix issues require manual attention."
+    ```
+  - Clean up the worktree:
+    ```
+    git worktree remove --force $WORKTREE_PATH
     ```
   - Clean up the worktree:
     ```
