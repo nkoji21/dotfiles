@@ -30,16 +30,16 @@ Never use interactive commands like `git add -p`. Instead:
 git diff > patch.diff
 
 # 2. Verify before applying (no file changes on failure)
-git apply --check patch.diff
+git apply --cached --check patch.diff
 
-# 3. Apply
-git apply -v patch.diff
+# 3. Apply to staging area (equivalent to git add)
+git apply --cached patch.diff
 ```
 
-If `git apply` fails, try in order:
-1. `git apply --whitespace=fix patch.diff`
-2. `git apply --ignore-space-change patch.diff`
-3. `git apply --reject patch.diff` → manually resolve `.rej` files
+If `git apply --cached` fails, try in order:
+1. `git apply --cached --whitespace=fix patch.diff`
+2. `git apply --cached --ignore-space-change patch.diff`
+3. Fall back to `git add <files>` for the specific files
 
 ## Commit Message Format
 Conventional Commits v1.0.0
