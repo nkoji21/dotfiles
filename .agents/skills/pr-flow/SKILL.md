@@ -15,8 +15,6 @@ It will return a worktree path (e.g. `/tmp/feat-foo`) and a branch name. Store b
 - `WORKTREE_PATH` — absolute path to the worktree
 - `BRANCH_NAME` — the branch created inside the worktree
 
-All subsequent git and file operations must be run inside `WORKTREE_PATH` by prefixing commands with `cd $WORKTREE_PATH &&` or by passing `-C $WORKTREE_PATH` to git.
-
 ## Phase 2: Commit
 
 Capture the current HEAD sha before committing:
@@ -24,13 +22,7 @@ Capture the current HEAD sha before committing:
 BEFORE_SHA=$(git -C $WORKTREE_PATH rev-parse HEAD)
 ```
 
-Before invoking the skill, change directory into the worktree:
-```
-cd $WORKTREE_PATH
-```
-
-Use the Skill tool to invoke the `git-commit` skill.
-Note: git-commit reads `git status` and `git diff` from the current working directory. It must be run from inside `WORKTREE_PATH`.
+Use the Skill tool to invoke the `git-commit` skill with args `--path $WORKTREE_PATH`.
 
 After the skill completes, check whether a commit was made:
 ```
@@ -39,18 +31,13 @@ AFTER_SHA=$(git -C $WORKTREE_PATH rev-parse HEAD)
 
 If `BEFORE_SHA == AFTER_SHA`, clean up the worktree and stop:
 ```
-git worktree remove $WORKTREE_PATH
+git worktree remove --force $WORKTREE_PATH
 ```
-Inform the user that there was nothing to commit.
+Inform the user that there was nothing to commit, and that their original changes remain in the source repo untouched.
 
 ## Phase 3: Open PR
 
-Change directory into the worktree, then invoke the `git-pr` skill:
-```
-cd $WORKTREE_PATH
-```
-
-Use the Skill tool to invoke the `git-pr` skill.
+Use the Skill tool to invoke the `git-pr` skill with args `--path $WORKTREE_PATH`.
 
 After the skill completes, capture the PR URL:
 ```
@@ -91,24 +78,28 @@ Format findings as a markdown list. Each item: severity label (`must-fix` / `sug
 
 ### 4c. Evaluate findings
 
-- **No issues** or **only `suggestion`/`nitpick`**: proceed to Phase 5.
+- **No issues** (including `issues: []`) or **only `suggestion`/`nitpick`**: proceed to Phase 5.
 - **`must-fix` issues exist AND iteration < 3**:
   - Read each flagged file before editing. Fix each `must-fix` issue.
   - Capture HEAD sha before invoking git-commit:
     ```
     FIX_BEFORE=$(git -C $WORKTREE_PATH rev-parse HEAD)
     ```
-  - Use the Skill tool to invoke `git-commit` to commit the fixes.
+  - Use the Skill tool to invoke `git-commit` with args `--path $WORKTREE_PATH` to commit the fixes.
   - Check if the commit actually happened:
     ```
     FIX_AFTER=$(git -C $WORKTREE_PATH rev-parse HEAD)
     ```
-  - If `FIX_BEFORE == FIX_AFTER` (nothing was committed): post a comment explaining the fix could not be committed, then stop. Do NOT loop.
+  - If `FIX_BEFORE == FIX_AFTER` (nothing was committed): post a comment explaining the fix could not be committed, clean up the worktree (`git worktree remove --force $WORKTREE_PATH`), then stop. Do NOT loop.
   - Increment iteration count and return to step 4a.
 - **`must-fix` issues exist AND iteration == 3**:
   - Post comment:
     ```
     gh pr comment <PR_URL> --body "[AI-generated review by Claude Code] Reached maximum auto-fix iterations (3). Remaining must-fix issues require manual attention."
+    ```
+  - Clean up the worktree:
+    ```
+    git worktree remove --force $WORKTREE_PATH
     ```
   - Stop. Do NOT proceed to merge.
 
@@ -135,7 +126,7 @@ If the merge command fails, report the exact error to the user and stop. Do not 
 
 After a successful merge, clean up the worktree:
 ```
-git worktree remove $WORKTREE_PATH
+git worktree remove --force $WORKTREE_PATH
 ```
 
 Report the final PR URL and merge status to the user.
