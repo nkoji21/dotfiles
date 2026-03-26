@@ -15,7 +15,7 @@ Review current branch changes and autonomously create a PR as draft.
 
 **Diff stat:**
 ```
-!`git diff --stat main...HEAD`
+!`git diff --stat main..HEAD`
 ```
 
 ## Arguments
