@@ -7,17 +7,15 @@ allowed-tools: Bash, Skill, Agent
 
 Orchestrate the full pull request workflow from staged changes to squash-merged PR.
 
-## Phase 1: Worktree + Branch
+## Phase 1: Branch
 
-Use the Skill tool to invoke the `git-worktree` skill.
-
-After the skill completes, note the worktree path (`/tmp/{branch-name}`) and branch name it reports.
-Perform all subsequent work inside that worktree directory.
-
-After Phase 5 completes (or if the workflow stops early), remove the worktree:
+First, check the current branch:
 ```
-git worktree remove /tmp/{branch-name}
+git branch --show-current
 ```
+
+- If already on `main` or `master`: use the Skill tool to invoke the `git-branch` skill to create a feature branch.
+- If already on a feature branch (not `main`/`master`): skip branch creation and use the current branch as-is. Inform the user which branch will be used.
 
 ## Phase 2: Commit
 
