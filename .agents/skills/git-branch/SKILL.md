@@ -1,10 +1,22 @@
 ---
 name: git-branch
-description: 変更内容を確認してブランチを作成
+description: Review changes and create a branch
 user-invocable: true
 ---
 
 Review the current state and create an appropriate branch.
+
+**Current branch:** `!`git branch --show-current``
+
+**Working tree status:**
+```
+!`git status --short`
+```
+
+**Diff stat:**
+```
+!`git diff --stat`
+```
 
 1. Run `git status` and `git diff` to understand what has changed
 2. Autonomously decide the most appropriate branch name based on the changes
