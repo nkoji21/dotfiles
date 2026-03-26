@@ -7,39 +7,48 @@ allowed-tools: Bash, Skill, Agent
 
 Orchestrate the full pull request workflow from staged changes to squash-merged PR.
 
-## Phase 1: Branch
+**Current branch:** `!`git branch --show-current``
 
-First, check the current branch:
+**Working tree status:**
 ```
-git branch --show-current
+!`git status --short`
 ```
 
-- If already on `main` or `master`: use the Skill tool to invoke the `git-branch` skill to create a feature branch.
-- If already on a feature branch (not `main`/`master`): skip branch creation and use the current branch as-is. Inform the user which branch will be used.
+## Phase 1: Worktree
+
+Use the Skill tool to invoke the `git-worktree` skill.
+
+It will return a worktree path (e.g. `/tmp/feat-foo`) and a branch name. Store both:
+- `WORKTREE_PATH` — absolute path to the worktree
+- `BRANCH_NAME` — the branch created inside the worktree
 
 ## Phase 2: Commit
 
 Capture the current HEAD sha before committing:
 ```
-BEFORE_SHA=$(git rev-parse HEAD)
+BEFORE_SHA=$(git -C $WORKTREE_PATH rev-parse HEAD)
 ```
 
-Use the Skill tool to invoke the `git-commit` skill.
+Use the Skill tool to invoke the `git-commit` skill with args `--path $WORKTREE_PATH`.
 
 After the skill completes, check whether a commit was made:
 ```
-AFTER_SHA=$(git rev-parse HEAD)
+AFTER_SHA=$(git -C $WORKTREE_PATH rev-parse HEAD)
 ```
 
-If `BEFORE_SHA == AFTER_SHA`, stop and inform the user that there was nothing to commit.
+If `BEFORE_SHA == AFTER_SHA`, clean up the worktree and stop:
+```
+git worktree remove --force $WORKTREE_PATH
+```
+Inform the user that there was nothing to commit, and that their original changes remain in the source repo untouched.
 
 ## Phase 3: Open PR
 
-Use the Skill tool to invoke the `git-pr` skill.
+Use the Skill tool to invoke the `git-pr` skill with args `--path $WORKTREE_PATH`.
 
 After the skill completes, capture the PR URL:
 ```
-gh pr view --json url --jq '.url'
+cd $WORKTREE_PATH && gh pr view --json url --jq '.url'
 ```
 
 If `gh pr create` failed because a PR already exists, retrieve the existing PR URL with the same command.
@@ -76,24 +85,28 @@ Format findings as a markdown list. Each item: severity label (`must-fix` / `sug
 
 ### 4c. Evaluate findings
 
-- **No issues** or **only `suggestion`/`nitpick`**: proceed to Phase 5.
+- **No issues** (including `issues: []`) or **only `suggestion`/`nitpick`**: proceed to Phase 5.
 - **`must-fix` issues exist AND iteration < 3**:
   - Read each flagged file before editing. Fix each `must-fix` issue.
   - Capture HEAD sha before invoking git-commit:
     ```
-    FIX_BEFORE=$(git rev-parse HEAD)
+    FIX_BEFORE=$(git -C $WORKTREE_PATH rev-parse HEAD)
     ```
-  - Use the Skill tool to invoke `git-commit` to commit the fixes.
+  - Use the Skill tool to invoke `git-commit` with args `--path $WORKTREE_PATH` to commit the fixes.
   - Check if the commit actually happened:
     ```
-    FIX_AFTER=$(git rev-parse HEAD)
+    FIX_AFTER=$(git -C $WORKTREE_PATH rev-parse HEAD)
     ```
-  - If `FIX_BEFORE == FIX_AFTER` (nothing was committed): post a comment explaining the fix could not be committed, then stop. Do NOT loop.
+  - If `FIX_BEFORE == FIX_AFTER` (nothing was committed): post a comment explaining the fix could not be committed, clean up the worktree (`git worktree remove --force $WORKTREE_PATH`), then stop. Do NOT loop.
   - Increment iteration count and return to step 4a.
 - **`must-fix` issues exist AND iteration == 3**:
   - Post comment:
     ```
     gh pr comment <PR_URL> --body "[AI-generated review by Claude Code] Reached maximum auto-fix iterations (3). Remaining must-fix issues require manual attention."
+    ```
+  - Clean up the worktree:
+    ```
+    git worktree remove --force $WORKTREE_PATH
     ```
   - Stop. Do NOT proceed to merge.
 
@@ -106,11 +119,21 @@ gh pr comment <PR_URL> --body "[AI-generated LGTM by Claude Code]
 No must-fix issues found. Proceeding to auto-merge."
 ```
 
+Mark the PR as ready for review (required before merging a draft PR):
+```
+gh pr ready <PR_URL>
+```
+
 Trigger squash merge:
 ```
 gh pr merge <PR_URL> --squash --auto
 ```
 
 If the merge command fails, report the exact error to the user and stop. Do not retry automatically.
+
+After a successful merge, clean up the worktree:
+```
+git worktree remove --force $WORKTREE_PATH
+```
 
 Report the final PR URL and merge status to the user.

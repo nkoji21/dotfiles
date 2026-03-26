@@ -1,10 +1,22 @@
 ---
 name: git-pr-ja
-description: ブランチの変更を確認して自律的にPRを作成（日本語）
+description: Review branch changes and autonomously open a PR (Japanese)
 user-invocable: true
 ---
 
 Review current branch changes and autonomously create a PR as draft.
+
+**Current branch:** `!`git branch --show-current``
+
+**Commits since main:**
+```
+!`git log --oneline main..HEAD`
+```
+
+**Diff stat:**
+```
+!`git diff --stat main...HEAD`
+```
 
 1. Run `git log --oneline main..HEAD` and `git diff main...HEAD` to understand the changes
 2. If a PR template exists in the project, follow it
