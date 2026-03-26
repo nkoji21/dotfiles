@@ -7,35 +7,40 @@ allowed-tools: Bash, Skill, Agent
 
 Orchestrate the full pull request workflow from staged changes to squash-merged PR.
 
-## Phase 1: Branch
+## Phase 1: Worktree
 
-First, check the current branch:
-```
-git branch --show-current
-```
+Use the Skill tool to invoke the `git-worktree` skill.
 
-- If already on `main` or `master`: use the Skill tool to invoke the `git-branch` skill to create a feature branch.
-- If already on a feature branch (not `main`/`master`): skip branch creation and use the current branch as-is. Inform the user which branch will be used.
+It will return a worktree path (e.g. `/tmp/feat-foo`) and a branch name. Store both:
+- `WORKTREE_PATH` — absolute path to the worktree
+- `BRANCH_NAME` — the branch created inside the worktree
+
+All subsequent git and file operations must be run inside `WORKTREE_PATH` by prefixing commands with `cd $WORKTREE_PATH &&` or by passing `-C $WORKTREE_PATH` to git.
 
 ## Phase 2: Commit
 
 Capture the current HEAD sha before committing:
 ```
-BEFORE_SHA=$(git rev-parse HEAD)
+BEFORE_SHA=$(git -C $WORKTREE_PATH rev-parse HEAD)
 ```
 
 Use the Skill tool to invoke the `git-commit` skill.
+Note: git-commit reads `git status` and `git diff` from the current working directory. Run it from inside the worktree or ensure the skill operates in `WORKTREE_PATH`.
 
 After the skill completes, check whether a commit was made:
 ```
-AFTER_SHA=$(git rev-parse HEAD)
+AFTER_SHA=$(git -C $WORKTREE_PATH rev-parse HEAD)
 ```
 
-If `BEFORE_SHA == AFTER_SHA`, stop and inform the user that there was nothing to commit.
+If `BEFORE_SHA == AFTER_SHA`, clean up the worktree and stop:
+```
+git worktree remove $WORKTREE_PATH
+```
+Inform the user that there was nothing to commit.
 
 ## Phase 3: Open PR
 
-Use the Skill tool to invoke the `git-pr` skill.
+Use the Skill tool to invoke the `git-pr` skill (run from inside `WORKTREE_PATH`).
 
 After the skill completes, capture the PR URL:
 ```
@@ -112,5 +117,10 @@ gh pr merge <PR_URL> --squash --auto
 ```
 
 If the merge command fails, report the exact error to the user and stop. Do not retry automatically.
+
+After a successful merge, clean up the worktree:
+```
+git worktree remove $WORKTREE_PATH
+```
 
 Report the final PR URL and merge status to the user.
