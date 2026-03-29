@@ -53,11 +53,6 @@ git apply --cached --check patch.diff
 git apply --cached patch.diff
 ```
 
-If `git apply --cached` fails, try in order:
-1. `git apply --cached --whitespace=fix patch.diff`
-2. `git apply --cached --ignore-space-change patch.diff`
-3. Fall back to `git add <files>` for the specific files
-
 ## Commit Message Format
 Conventional Commits v1.0.0
 
@@ -73,18 +68,6 @@ fix(git): remove deprecated option
 # Better (Why in subject)
 fix(git): remove deprecated option to prevent startup warning
 ```
-
-Types:
-- `feat`: new feature
-- `fix`: bug fix
-- `docs`: documentation only
-- `style`: formatting, whitespace
-- `refactor`: code change without bug fix or feature
-- `perf`: performance improvement
-- `test`: add/update tests
-- `build`: build system, dependencies
-- `chore`: other configs, tooling
-- `ci`: CI configuration
 
 Required footer:
 ```
