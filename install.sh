@@ -47,6 +47,7 @@ mkdir -p ~/.local/share/sheldon
 mkdir -p ~/.cursor
 mkdir -p ~/.claude
 mkdir -p ~/.codex
+mkdir -p ~/.agents
 
 # Symlink home directory files
 ln -sfn "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
@@ -60,14 +61,13 @@ ln -sfn "$DOTFILES_DIR/.cursor/commands" ~/.cursor/commands
 ln -sfn "$DOTFILES_DIR/.cursor/rules" ~/.cursor/rules
 ln -sfn "$DOTFILES_DIR/.cursor/skills" ~/.cursor/skills
 
-# Symlink .claude files
+# Symlink skills for each agent
+# Claude Code: ~/.claude/skills
 ln -sfn "$DOTFILES_DIR/.claude/skills" ~/.claude/skills
-
-# Symlink .codex skills individually (cannot symlink the whole dir as ~/.codex is managed by Codex)
-for skill_dir in "$DOTFILES_DIR/.agents/skills"/*/; do
-    skill_name=$(basename "$skill_dir")
-    ln -sfn "$skill_dir" ~/.codex/skills/"$skill_name"
-done
+# Codex: ~/.agents/skills (user-level global path per https://developers.openai.com/codex/skills)
+ln -sfn "$DOTFILES_DIR/.agents/skills" ~/.agents/skills
+# Cursor: ~/.cursor/skills (user-level global path per https://cursor.com/docs/skills)
+ln -sfn "$DOTFILES_DIR/.cursor/skills" ~/.cursor/skills
 
 # Symlink .config subdirectories
 ln -sfn "$DOTFILES_DIR/mise/config.toml" ~/.config/mise/config.toml
