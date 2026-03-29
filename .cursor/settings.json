@@ -67,9 +67,7 @@
 
   // background - opacity
   "vscode_vibrancy.opacity": 0.42,
-  "workbench.colorCustomizations": {
-    "terminal.background": "#00000000"
-  },
+  "workbench.colorCustomizations": {},
   "workbench.panel.showLabels": false,
   "zig.zls.enabled": "on",
   "cursor.cpp.disabledLanguages": [
@@ -77,9 +75,6 @@
     "plaintext",
     "c"
   ],
-  "terminal.integrated.gpuAcceleration": "off",
-  "window.systemColorTheme": "dark",
-  "window.autoDetectColorScheme": false,
   "accessibility.signals.terminalBell": {
     "sound": "on"
   }
