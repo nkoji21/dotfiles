@@ -43,4 +43,4 @@ Anything the reviewer should be aware of. Remove if unnecessary.
 
 **Write all content in English.**
 **Keep it concise. Implementation details belong in the diff, not the PR description.**
-**For readability, wrap long lines with a newline at natural break points (e.g. after a period or comma) so no line exceeds ~80 characters.**
+**For readability, wrap long lines with a newline at natural break points (e.g. after a period or comma) so no line exceeds ~80 characters. Do not add blank lines between list items.**
