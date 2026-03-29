@@ -25,24 +25,7 @@ It will return a worktree path (e.g. `/tmp/feat-foo`) and a branch name. Store b
 
 ## Phase 2: Commit
 
-Capture the current HEAD sha before committing (the worktree always starts at main's HEAD, so this detects whether git-commit created a new commit):
-```
-BEFORE_SHA=$(git -C $WORKTREE_PATH rev-parse HEAD)
-```
-
-Use the Skill tool to invoke the `git-commit` skill with args `--path $WORKTREE_PATH`.
-
-After the skill completes, check whether a commit was made:
-```
-AFTER_SHA=$(git -C $WORKTREE_PATH rev-parse HEAD)
-```
-
-If `BEFORE_SHA == AFTER_SHA`, clean up the worktree and stop:
-```
-git worktree remove --force $WORKTREE_PATH
-```
-Note: `--force` discards any uncommitted state in the worktree (e.g. `patch.diff` created by git-commit). This is intentional — the source repo's working tree is untouched.
-Inform the user that there was nothing to commit, and that their original changes remain in the source repo untouched.
+Capture HEAD sha before and after invoking `git-commit` with args `--path $WORKTREE_PATH` to detect whether a commit was made. If no commit was made, remove the worktree with `--force` and stop — inform the user their changes remain in the source repo untouched.
 
 ## Phase 3: Open PR
 
@@ -71,35 +54,16 @@ Review the PR at <PR_URL>. Run `gh pr diff <PR_URL>` to get the diff. Analyze it
 
 ### 4b. Validate and post the review comment
 
-Before posting, verify that the subagent's response contains a `REVIEW_RESULT` ... `END_REVIEW_RESULT` block. If the block is absent or malformed, post this warning instead and proceed to Phase 5:
-```
-gh pr comment $PR_URL --body "[AI-generated review by Claude Code] Warning: reviewer returned malformed output. Skipping auto-fix. Please review manually."
-```
+Verify the subagent's response contains a `REVIEW_RESULT` ... `END_REVIEW_RESULT` block. If absent or malformed, post a warning comment and proceed to Phase 5.
 
-Otherwise, post the findings:
-```
-gh pr comment $PR_URL --body "[AI-generated review by Claude Code]
-
-<formatted review findings here>"
-```
-
-Format findings as a markdown list. Each item: severity label (`must-fix` / `suggestion` / `nitpick`), file/location, description.
+Otherwise post findings as a markdown list prefixed with `[AI-generated review by Claude Code]`. Each item: severity label (`must-fix` / `suggestion` / `nitpick`), file/location, description.
 
 ### 4c. Evaluate findings
 
 - **No issues** (including `issues: []`) or **only `suggestion`/`nitpick`**: proceed to Phase 5.
 - **`must-fix` issues exist AND iteration < 3**:
-  - Read each flagged file before editing. Fix each `must-fix` issue.
-  - Capture HEAD sha before invoking git-commit:
-    ```
-    FIX_BEFORE=$(git -C $WORKTREE_PATH rev-parse HEAD)
-    ```
-  - Use the Skill tool to invoke `git-commit` with args `--path $WORKTREE_PATH` to commit the fixes.
-  - Check if the commit actually happened:
-    ```
-    FIX_AFTER=$(git -C $WORKTREE_PATH rev-parse HEAD)
-    ```
-  - If `FIX_BEFORE == FIX_AFTER` (nothing was committed): post a comment explaining the fix could not be committed, clean up the worktree (`git worktree remove --force $WORKTREE_PATH`), then stop. Do NOT loop.
+  - Read each flagged file and fix each `must-fix` issue.
+  - Invoke `git-commit` with `--path $WORKTREE_PATH`. Check HEAD sha before/after — if nothing was committed, post a comment, clean up the worktree, and stop.
   - Increment iteration count and return to step 4a.
 - **`must-fix` issues exist AND iteration == 3**:
   - Post comment:
