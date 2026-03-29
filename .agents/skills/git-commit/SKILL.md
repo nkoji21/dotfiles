@@ -26,7 +26,9 @@ If a `--path <dir>` argument is provided (e.g. invoked as `git-commit --path /tm
 3. Stage and commit using `git apply` (see below)
 
 ## Principle
-- Write **Why** (why the change was made) in the commit message. Leave What to the diff.
+- Write **Why** in the subject line itself — keep it concise but meaningful.
+- Body is optional. If you feel a body is necessary, the commit is likely too large — consider splitting it.
+- Footer (Co-Authored-By) is always required.
 - Each commit must be **independently revertable** without breaking other functionality.
 
 ## Commit Granularity
@@ -61,7 +63,16 @@ Conventional Commits v1.0.0
 
 Format: `type(scope): description`
 - scope: optional (e.g., `alacritty`, `vim`, `git`)
-- **description: in English**
+- **description: in English** — convey Why, not just What, but keep it short
+
+Examples:
+```
+# Too vague (What only)
+fix(git): remove deprecated option
+
+# Better (Why in subject)
+fix(git): remove deprecated option to prevent startup warning
+```
 
 Types:
 - `feat`: new feature
