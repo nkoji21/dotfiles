@@ -24,8 +24,12 @@ Review current branch changes and autonomously create a PR as draft.
 If a `--path <dir>` argument is provided (e.g. invoked as `git-pr --path /tmp/feat-foo`), all git and gh commands must be run inside that directory by prepending `cd <dir> &&` to every Bash command. This overrides the current working directory.
 
 1. Run `git log --oneline main..HEAD` and `git diff main...HEAD` to understand the changes
-2. If a PR template exists in the project, follow it
-3. Autonomously decide the PR title and body, then create it with `gh pr create --draft`
+2. **Granularity check**: Before writing the PR, assess whether the changes belong to a single concern:
+   - Group changed files by what they do (feature, test, config, infra, docs, etc.)
+   - If changes span 2+ unrelated concerns (e.g. a feature AND an infra fix), stop and tell the user which concerns were identified and suggest splitting into separate PRs. Do not create the PR until the user confirms to proceed as-is or asks you to split.
+   - A PR is appropriately sized if a reviewer can understand it in one sitting. More than ~400 changed lines or 3+ unrelated concerns is a signal to split.
+3. If a PR template exists in the project, follow it
+4. Autonomously decide the PR title and body, then create it with `gh pr create --draft`
 
 ## PR Format (if no template exists)
 
