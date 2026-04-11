@@ -33,7 +33,7 @@
     "editor.insertSpaces": false,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
-    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    "editor.defaultFormatter": "xaver.clang-format"
   },
 
   // ==============================
@@ -67,9 +67,7 @@
 
   // background - opacity
   "vscode_vibrancy.opacity": 0.42,
-  "workbench.colorCustomizations": {
-    "terminal.background": "#00000000"
-  },
+  "workbench.colorCustomizations": {},
   "workbench.panel.showLabels": false,
   "zig.zls.enabled": "on",
   "cursor.cpp.disabledLanguages": [
@@ -79,8 +77,5 @@
   ],
   "accessibility.signals.terminalBell": {
     "sound": "on"
-  },
-  "terminal.integrated.gpuAcceleration": "off",
-  "window.systemColorTheme": "dark",
-  "window.autoDetectColorScheme": false
+  }
 }
