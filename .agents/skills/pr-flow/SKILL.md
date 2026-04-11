@@ -31,10 +31,11 @@ Capture HEAD sha before and after invoking `git-commit` with args `--path $WORKT
 
 Before opening the PR, assess whether the committed changes belong to a single concern:
 
-- Run `git diff main...HEAD --stat` inside `$WORKTREE_PATH` to see what changed
+- Determine the default branch: run `git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||'` inside `$WORKTREE_PATH`; fall back to `main` if empty. Store as `DEFAULT_BRANCH`.
+- Run `git diff $DEFAULT_BRANCH...HEAD --stat -- ':!*.lock' ':!*_generated.*' ':!vendor/'` inside `$WORKTREE_PATH` to see what changed (generated and lock files excluded).
 - Group changed files by what they do (feature, test, config, infra, docs, etc.). Tests and docs that directly support a feature change belong to the same concern.
-- If changes span 2+ unrelated concerns, stop and tell the user which concerns were identified and suggest splitting into separate PRs. Do not proceed until the user confirms to continue as a single PR or asks you to split.
-- Exclude generated and lock files (e.g. `*.lock`, `*_generated.*`, `vendor/`) from the line count. If the remaining diff exceeds ~400 lines, treat it as a signal (not a hard stop) to mention that splitting may improve reviewability.
+- If changes span 2+ unrelated concerns (e.g. a dependency bump alongside a new API endpoint), stop and tell the user which concerns were identified and suggest splitting into separate PRs. Do not proceed until the user confirms to continue as a single PR or asks you to split.
+- If the filtered diff exceeds ~400 lines, treat it as a signal (not a hard stop) to mention that splitting may improve reviewability.
 
 ## Phase 4: Open PR
 
@@ -63,7 +64,7 @@ Review the PR at <PR_URL>. Run `gh pr diff <PR_URL>` to get the diff. Analyze it
 
 ### 5b. Validate and post the review comment
 
-Verify the subagent's response contains a `REVIEW_RESULT` ... `END_REVIEW_RESULT` block. If absent or malformed, post a warning comment and proceed to Phase 5.
+Verify the subagent's response contains a `REVIEW_RESULT` ... `END_REVIEW_RESULT` block. If absent or malformed, post a warning comment and proceed to Phase 6.
 
 Otherwise post findings as a markdown list prefixed with `[AI-generated review by Claude Code]`. Each item: severity label (`must-fix` / `suggestion` / `nitpick`), file/location, description.
 
