@@ -1,6 +1,6 @@
 ---
 name: git-commit-ja
-description: Review changes and autonomously commit (Japanese)
+description: Review changes and autonomously commit (Japanese). ALSO trigger this skill proactively when you (Claude) are about to commit changes — never run `git commit` directly, always invoke this skill instead.
 user-invocable: true
 allowed-tools: Bash, Skill
 ---
