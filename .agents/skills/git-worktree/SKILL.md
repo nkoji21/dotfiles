@@ -88,3 +88,7 @@ Or force-remove if the branch is already gone:
 ```bash
 git worktree remove --force /tmp/{branch-name}
 ```
+
+## Related Skills
+
+- `pr-flow` / `pr-flow-ja` — Full PR workflow that invokes this skill in Phase 1
