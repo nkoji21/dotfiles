@@ -79,7 +79,7 @@ ln -sfn "$DOTFILES_DIR/ghostty/config" ~/.config/ghostty/config
 ln -sfn "$DOTFILES_DIR/ghostty/themes/kanagawa-wave" ~/.config/ghostty/themes/kanagawa-wave
 ln -sfn "$DOTFILES_DIR/sheldon/plugins.toml" ~/.config/sheldon/plugins.toml
 ln -sfn "$DOTFILES_DIR/sheldon/plugins.lock" ~/.local/share/sheldon/plugins.lock
-ln -sfn "$DOTFILES_DIR/nvim/init.lua" ~/.config/nvim/init.lua
+ln -sfn "$DOTFILES_DIR/nvim" ~/.config/nvim
 
 echo "✓ Symlinks created"
 
