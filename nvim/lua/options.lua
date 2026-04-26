@@ -12,7 +12,7 @@ vim.opt.smartindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 4
 
 vim.opt.cursorline = true
 vim.opt.fixendofline = true
