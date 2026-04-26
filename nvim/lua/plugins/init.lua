@@ -15,7 +15,10 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins", {
+require("lazy").setup({
+  { import = "plugins.kanagawa" },
+  { import = "plugins.lualine" },
+}, {
   change_detection = {
     notify = false,
   },
