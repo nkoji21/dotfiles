@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   { import = "plugins.kanagawa" },
   { import = "plugins.lualine" },
+  { import = "plugins.autopairs" },
 }, {
   change_detection = {
     notify = false,
