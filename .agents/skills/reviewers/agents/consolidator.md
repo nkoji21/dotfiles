@@ -56,6 +56,10 @@ Sort by: Severity (CRITICAL → WARNING → SUGGESTION), then Confidence (HIGH �
 - **COMMENT**: Any CRITICAL with LOW confidence, OR any WARNING regardless of confidence
 - **APPROVE**: No CRITICAL or WARNING findings at any confidence level
 
+## Language
+
+Write ALL output in Japanese.
+
 ## Output Format
 
 ```
