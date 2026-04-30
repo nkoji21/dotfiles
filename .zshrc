@@ -30,6 +30,7 @@ precmd() {
 }
 
 # ===== エイリアス =====
+alias vim="nvim"
 
 # モダンツール
 alias ls="eza -l --git --icons"
