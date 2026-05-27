@@ -33,7 +33,10 @@
     "editor.insertSpaces": false,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
-    "editor.defaultFormatter": "xaver.clang-format"
+    "editor.defaultFormatter": "keyhr.42-c-format"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "keyhr.42-c-format"
   },
 
   // ==============================
