@@ -8,3 +8,6 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/aquaproj-aqua/bin:$PATH"
 export AQUA_ROOT_DIR="$HOME/.local/share/aquaproj-aqua"
 export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
+
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"
