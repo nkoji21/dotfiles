@@ -9,7 +9,7 @@
 	save = stash save -u # メッセージ付きstash untrackedファイル含
 	see = !gh repo view --web # 該当リポジトリを開く
 	la = log --oneline --decorate --graph --branches --tags --remotes --all
-	gone = "!git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
+	gone = "!f() { current=$(git rev-parse --show-toplevel); git for-each-ref --format='%(refname:short)%09%(upstream:track)%09%(worktreepath)' refs/heads | while IFS='	' read -r branch track worktree; do [ \"$track\" = '[gone]' ] || continue; if [ -n \"$worktree\" ]; then if [ \"$worktree\" = \"$current\" ]; then echo \"Skipping current worktree: $branch ($worktree)\" >&2; continue; fi; git worktree remove \"$worktree\" || continue; fi; git branch -D \"$branch\"; done; }; f"
 	aliases = !git config --get-regexp alias | sed 's/^alias.//g' | sed 's/ / = /1'
 
 [fetch]
