@@ -1,3 +1,6 @@
+[settings]
+minimum_release_age = "14d"
+
 [tools]
 go = "1.26.3"
 node = "25.9.0"

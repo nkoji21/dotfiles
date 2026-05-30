@@ -7,7 +7,14 @@
   "automerge": true,
 
   // 安定版を待つ
-  "minimumReleaseAge": "3 days",
+  "minimumReleaseAge": "14 days",
+  "internalChecksFilter": "strict",
+
+  // 脆弱性修正は待たずにPRを作る
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "addLabels": ["security"]
+  },
 
   // ロックファイルメンテナンス無効
   "lockFileMaintenance": {
