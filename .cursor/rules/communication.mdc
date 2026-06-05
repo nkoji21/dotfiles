@@ -12,7 +12,3 @@ alwaysApply: true
 - Question suboptimal approaches
 - Propose better solutions proactively
 - Prioritize correctness over compliance
-
-# Conventions
-
-See `/commit`, `/commit-en`, `/pr`, `/branch` for details.
