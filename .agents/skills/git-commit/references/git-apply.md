@@ -1,19 +1,20 @@
 # Git Apply Reference
 
+This skill stages patches **without touching the worktree**, so every command here
+uses `--cached` by default. Drop `--cached` only when you deliberately want to apply
+to the working tree instead of the index.
+
 ## Basic Usage
 
 ```bash
-# Always verify first before applying
-git apply --check patch_file.patch
+# Always verify first before staging (no changes on failure)
+git apply --cached --check patch_file.patch
 
-# Apply with verbose output for debugging
-git apply -v patch_file.patch
-
-# Stage without touching the worktree
+# Stage with verbose output for debugging
 git apply --cached -v patch_file.patch
 
-# Apply a diff generated between refs
-git diff main...HEAD -- <file> | git apply -v
+# Stage a diff generated between refs
+git diff main...HEAD -- <file> | git apply --cached -v
 ```
 
 ## Essential Flags
@@ -31,26 +32,32 @@ git diff main...HEAD -- <file> | git apply -v
 Trailing whitespace:
 
 ```bash
-git apply --check --whitespace=fix patch_file.patch
-git apply --whitespace=fix -v patch_file.patch
+git apply --cached --check --whitespace=fix patch_file.patch
+git apply --cached --whitespace=fix -v patch_file.patch
 ```
 
-Partial failures:
+Partial failures (write `.rej` files for the hunks that don't apply):
 
 ```bash
-git apply --reject -v patch_file.patch
+git apply --cached --reject -v patch_file.patch
 ```
 
-Context mismatch:
+Context mismatch — the surrounding lines in the file no longer match the patch
+context (line offsets / fuzz). Prefer a three-way merge, which uses the blob the
+patch was based on:
 
 ```bash
-git apply --ignore-whitespace -v patch_file.patch
+git apply --cached --3way -v patch_file.patch
 ```
+
+If `--3way` is not viable, loosen the required context lines with `-C<n>` (e.g.
+`-C1`). Note: `--ignore-whitespace` only helps when the *only* difference in the
+context is whitespace — it does not fix genuine line-offset mismatches.
 
 Line ending issues:
 
 ```bash
-git apply --ignore-space-change -v patch_file.patch
+git apply --cached --ignore-space-change -v patch_file.patch
 ```
 
 ## Git Apply vs Git Am
@@ -58,4 +65,5 @@ git apply --ignore-space-change -v patch_file.patch
 - `git apply`: applies or stages changes without creating commits.
 - `git am`: applies patches with commit messages and author info preserved.
 
-Use `git apply -v` for this workflow to keep commit creation explicit and controlled.
+Use `git apply --cached -v` for this workflow to keep commit creation explicit and
+controlled.
