@@ -64,8 +64,9 @@ Never use interactive commands like `git add -p` or `git add --interactive` —
 Claude Code cannot handle them. Instead:
 
 ```bash
-# 1. Generate patch for the target changes
-git diff > patch.diff
+# 1. Generate patch for the target changes (HEAD-relative so already-staged
+#    hunks and new files from a prior iteration are not lost)
+git diff HEAD > patch.diff
 
 # 2. Verify before applying (no file changes on failure)
 git apply --cached --check patch.diff
@@ -95,8 +96,9 @@ fix(git): remove deprecated option
 fix(git): remove deprecated option to prevent startup warning
 ```
 
-Body is optional. If you feel a body is necessary, the commit is likely too large —
-consider splitting it.
+Body is optional. Add one only to explain Why or revertability when the subject
+alone is insufficient. If a body is needed just to enumerate *what* changed, the
+commit is likely too large — consider splitting it.
 
 Do not add a `Co-Authored-By` or any agent-identifying footer. This skill is shared
 across Claude / Codex / Cursor, so hardcoding a single agent name would mislabel
@@ -117,5 +119,8 @@ those as part of the normal validation path and fix any failures in a new small
 commit.
 
 Never push to `main`/`master` directly — create a feature branch first.
+
+If `--path <dir>` was also given, the push commands must run inside `<dir>` too —
+`references/push.md` shows where to prepend `cd <dir> &&`.
 
 Read `references/push.md` for the exact branch/upstream checks and push commands.

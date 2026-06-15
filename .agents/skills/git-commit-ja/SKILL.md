@@ -6,8 +6,9 @@ allowed-tools: Bash, Skill
 ---
 
 Use `/git-commit` to perform the commit (granularity, revertability, `git apply`
-staging, and `references/` all apply unchanged). It also forwards any `--path` /
-`--push` arguments.
+staging, and references all apply unchanged). It also forwards any `--path` /
+`--push` arguments. The reference docs live under
+`.agents/skills/git-commit/references/` (this skill has none of its own).
 
 ## Language override (this skill takes precedence)
 
