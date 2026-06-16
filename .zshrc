@@ -137,6 +137,9 @@ man() {
 # sheldon
 eval "$(sheldon source)"
 
+# direnv: auto-load per-directory environments (e.g. Nix devShells via .envrc)
+eval "$(direnv hook zsh)"
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/naoki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/naoki/google-cloud-sdk/path.zsh.inc'; fi
 

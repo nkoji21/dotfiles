@@ -44,6 +44,7 @@ mkdir -p ~/.config/aqua
 mkdir -p ~/.config/ghostty/themes
 mkdir -p ~/.config/sheldon
 mkdir -p ~/.config/nvim
+mkdir -p ~/.config/direnv
 mkdir -p ~/.local/share/sheldon
 mkdir -p ~/.cursor
 mkdir -p ~/.claude
@@ -80,6 +81,7 @@ ln -sfn "$DOTFILES_DIR/ghostty/themes/kanagawa-wave" ~/.config/ghostty/themes/ka
 ln -sfn "$DOTFILES_DIR/sheldon/plugins.toml" ~/.config/sheldon/plugins.toml
 ln -sfn "$DOTFILES_DIR/sheldon/plugins.lock" ~/.local/share/sheldon/plugins.lock
 ln -sfn "$DOTFILES_DIR/nvim" ~/.config/nvim
+ln -sfn "$DOTFILES_DIR/direnv/direnvrc" ~/.config/direnv/direnvrc
 
 echo "✓ Symlinks created"
 
