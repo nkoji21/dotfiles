@@ -11,3 +11,6 @@ export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
 
 # opencode
 export PATH="$HOME/.opencode/bin:$PATH"
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"

@@ -142,3 +142,6 @@ if [ -f '/Users/naoki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/naoki/goo
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/naoki/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/naoki/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"
