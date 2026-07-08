@@ -54,15 +54,7 @@
   "background.enabled": true,
   "background.fullscreen": {
     "images": [
-      "/usr/local/share/ghostty/backgrounds/1.jpeg",
-      "/usr/local/share/ghostty/backgrounds/2.png",
-      "/usr/local/share/ghostty/backgrounds/3.jpg",
-      "/usr/local/share/ghostty/backgrounds/4.png",
-      "/usr/local/share/ghostty/backgrounds/5.png",
-      "/usr/local/share/ghostty/backgrounds/6.png",
-      "/usr/local/share/ghostty/backgrounds/7.png",
-      "/usr/local/share/ghostty/backgrounds/8.png",
-      "/usr/local/share/ghostty/backgrounds/9.jpg"
+      "/usr/local/share/ghostty/backgrounds"
     ],
     "opacity": 0.042,
     "random": true
@@ -71,7 +63,33 @@
   // background - opacity
   "vscode_vibrancy.opacity": 0.42,
   "workbench.colorCustomizations": {
-    "terminal.background": "#00000000"
+    "terminal.background": "#00000000",
+    "editorPane.background": "#1e1e1e00",
+    "editorGroupHeader.tabsBackground": "#1e1e1e00",
+    "editorGroupHeader.noTabsBackground": "#1e1e1e00",
+    "breadcrumb.background": "#1e1e1e00",
+    "editorGutter.background": "#1e1e1e00",
+    "panel.background": "#1e1e1e00",
+    "panelStickyScroll.background": "#1e1e1e00",
+    "tab.activeBackground": "#1e1e1e00",
+    "tab.unfocusedActiveBackground": "#1e1e1e00",
+    "sideBar.background": "#1e1e1e6b",
+    "sideBarTitle.background": "#1e1e1e6b",
+    "sideBarStickyScroll.background": "#1e1e1e6b",
+    "activityBar.background": "#1e1e1e6b",
+    "editor.background": "#1e1e1e6b",
+    "editorStickyScroll.background": "#1e1e1e6b",
+    "editorStickyScrollGutter.background": "#1e1e1e6b",
+    "tab.inactiveBackground": "#1e1e1e6b",
+    "tab.unfocusedInactiveBackground": "#1e1e1e6b",
+    "inlineChat.background": "#1e1e1ee6",
+    "editorWidget.background": "#1e1e1ee6",
+    "editorHoverWidget.background": "#1e1e1ee6",
+    "editorSuggestWidget.background": "#1e1e1ee6",
+    "notifications.background": "#1e1e1ee6",
+    "notificationCenterHeader.background": "#1e1e1ee6",
+    "menu.background": "#1e1e1ee6",
+    "quickInput.background": "#1e1e1ee6"
   },
   "workbench.panel.showLabels": false,
   "zig.zls.enabled": "on",
