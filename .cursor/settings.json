@@ -54,15 +54,7 @@
   "background.enabled": true,
   "background.fullscreen": {
     "images": [
-      "/usr/local/share/ghostty/backgrounds/1.jpeg",
-      "/usr/local/share/ghostty/backgrounds/2.png",
-      "/usr/local/share/ghostty/backgrounds/3.jpg",
-      "/usr/local/share/ghostty/backgrounds/4.png",
-      "/usr/local/share/ghostty/backgrounds/5.png",
-      "/usr/local/share/ghostty/backgrounds/6.png",
-      "/usr/local/share/ghostty/backgrounds/7.png",
-      "/usr/local/share/ghostty/backgrounds/8.png",
-      "/usr/local/share/ghostty/backgrounds/9.jpg"
+      "/usr/local/share/ghostty/backgrounds"
     ],
     "opacity": 0.042,
     "random": true
