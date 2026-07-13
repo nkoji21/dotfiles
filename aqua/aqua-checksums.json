@@ -256,6 +256,36 @@
       "algorithm": "sha256"
     },
     {
+      "id": "github_release/github.com/supabase/cli/v2.109.1/supabase_darwin_amd64.tar.gz",
+      "checksum": "FEE962ECF455C69497F93C19B369443B114A934161B8CECBD8A5B812C3C8C013",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/supabase/cli/v2.109.1/supabase_darwin_arm64.tar.gz",
+      "checksum": "E36776717A56D704769229649349B3A382F413CB31F1FB2BA4647EF8BCF7339B",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/supabase/cli/v2.109.1/supabase_linux_amd64.tar.gz",
+      "checksum": "36D87B7FE6B4BCFE89AC47A4354E526CFF22480224DE426D7B370F6934556976",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/supabase/cli/v2.109.1/supabase_linux_arm64.tar.gz",
+      "checksum": "A7F7C771ACD3A2A13938B5832029BEB24787B165D5119ED57AD6E964F3593291",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/supabase/cli/v2.109.1/supabase_windows_amd64.tar.gz",
+      "checksum": "3129AF9E9AE96A387E5552D928660F120A2671F0B4FB888E91D783E9B16F20AA",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/supabase/cli/v2.109.1/supabase_windows_arm64.tar.gz",
+      "checksum": "B6074C5FC2E214E20FF111509C232303D3125FA5719E0CA7AA35A4A3733FD475",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/suzuki-shunsuke/pinact/v3.7.4/pinact_darwin_amd64.tar.gz",
       "checksum": "D636D9E295EB26F6FB104ABC0F4A80778E169655EC0CD1457F353272DB446F15",
       "algorithm": "sha256"
