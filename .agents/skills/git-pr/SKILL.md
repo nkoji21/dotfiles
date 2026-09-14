@@ -45,20 +45,38 @@ If a `--path <dir>` argument is provided (e.g. invoked as `git-pr --path /tmp/fe
 5. Verify the created PR with
    `gh pr view --json isDraft,title,body,baseRefName,headRefName,url`
 
+## What goes in the body
+
+Write only what a reviewer cannot get from the diff. Aim for 15–25 lines;
+over 30 is a signal to cut, not to reformat.
+
+- **Context**: links only — issue, design doc, Figma, Slack thread. If the
+  design intent is already written on the issue (e.g. as a comment), link that
+  comment; never restate it.
+- **Summary**: 1–3 lines saying what changed.
+- **Notes**: only facts the reviewer needs and cannot see in the diff — an API
+  limitation you worked around, a deliberate deviation from the spec, a known
+  gap with its issue link. One or two items at most. Omit the section entirely
+  when there is nothing.
+- **Screenshots** when UI changed.
+
+Never write: why the design is the way it is (that lives on the issue or in
+Figma), a commit-by-commit history of how you got here, products you took
+inspiration from, apologies or caveats about what you did not do, or prose
+that paraphrases the diff. Template sections such as "implementation approach"
+or "review points" may be answered with "none" — never pad them to look
+complete.
+
 ## PR Format (if no template exists)
 
 close #{issue_number}
 (Remove this line if no related issue exists)
 
 ## Summary
-Why this change was made. Focus on motivation, not implementation.
-
-## Changes
-High-level overview of the approach — not implementation details (those are visible in File Changes).
+What changed, in 1–3 lines.
 
 ## Notes
-Anything the reviewer should be aware of. Remove if unnecessary.
+Only what the reviewer cannot see in the diff. Remove if unnecessary.
 
 **Write all content in English.**
-**Keep it concise. Implementation details belong in the diff, not the PR description.**
 **For readability, wrap long lines with a newline at natural break points (e.g. after a period or comma) so no line exceeds ~80 characters. Do not add blank lines between list items.**
