@@ -85,14 +85,17 @@ Format: `type(scope): description`
 - **type**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`,
   `ci`, `chore`, `revert`
 - **scope**: optional (e.g., `alacritty`, `vim`, `git`)
-- **description: in English** — convey Why, not just What, but keep it short
+- **description: in English** — a short What by default. Add Why only when the
+  diff or linked issue doesn't make the reason obvious: a choice among
+  alternatives, a workaround, temporary code, or something a reader might "fix"
+  back. Don't restate the What as a fake Why ("add X to support X").
 
 Examples:
 ```
-# Too vague (What only)
-fix(git): remove deprecated option
+# What is enough (the change or issue already explains the reason)
+feat(render): exit on ESC and window close button
 
-# Better (Why in subject)
+# Add Why (the reason isn't visible in the diff)
 fix(git): remove deprecated option to prevent startup warning
 ```
 
@@ -107,7 +110,7 @@ commits made by the others.
 ## Quality Checks
 - Can this be reverted without breaking other functionality?
 - Is this the smallest logical unit?
-- Does the message clearly explain the change (Why)?
+- Would a reader of the diff ask "why?" — if so, does the message answer it?
 - Does it match the project's commit patterns, scopes, and style?
 - No debugging statements or commented-out code without explanation
 
