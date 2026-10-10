@@ -19,10 +19,16 @@ message:
 - **type**: English Conventional Commits type (`feat`, `fix`, `docs`, `refactor`,
   `chore`, …).
 - **scope**: English (e.g. `alacritty`, `vim`, `git`).
-- **description**: 日本語で書く。What だけでなく Why を簡潔に。
+- **description**: 日本語で書く。基本は短い What。差分や issue から理由が読めない
+  とき（他の案から選んだ、回避策、一時的なコード、読んだ人が直したくなりそう）
+  だけ Why を足す。
 
-Example:
+Examples:
 
 ```
+# What だけで十分（理由は変更や issue から分かる）
+feat(render): ESC と×ボタンで終了する
+
+# Why を足す（理由が差分から読めない）
 fix(alacritty): 起動時警告を消すため非推奨オプションを削除
 ```
