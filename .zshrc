@@ -1,3 +1,11 @@
+# ===== PATH =====
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/naoki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/naoki/google-cloud-sdk/path.zsh.inc'; fi
+
+# Unity CLI
+if [ -f "$HOME/.unity/env" ]; then . "$HOME/.unity/env"; fi
+
 # ===== プロンプト設定 =====
 # 対話的シェル起動時に毎回読み込まれる
 
@@ -151,11 +159,9 @@ kpp() {
 # sheldon
 eval "$(sheldon source)"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/naoki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/naoki/google-cloud-sdk/path.zsh.inc'; fi
-
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/naoki/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/naoki/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Vite+ bin (https://viteplus.dev)
+# 補完の登録に compdef が要るので、compinit を実行する gcloud の completion より後に読み込む
 . "$HOME/.vite-plus/env"
