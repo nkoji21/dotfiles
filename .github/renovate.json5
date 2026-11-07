@@ -2,8 +2,9 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
 
-  // 自動マージはしない（更新内容を必ず目視してからマージする）
-  "automerge": false,
+  // 自動マージ設定
+  "platformAutomerge": true,
+  "automerge": true,
 
   // 安定版を待つ
   "minimumReleaseAge": "14 days",
