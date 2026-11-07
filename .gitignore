@@ -4,3 +4,6 @@ alacritty/alacritty
 
 # Sheldon lock file contains environment-specific paths
 sheldon/plugins.lock
+
+# Auto-synced skills
+.agents/skills/synced/
