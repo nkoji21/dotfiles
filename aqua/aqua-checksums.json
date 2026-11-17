@@ -371,6 +371,21 @@
       "algorithm": "sha256"
     },
     {
+      "id": "http/awscli.amazonaws.com/AWSCLIV2-2.40.4.pkg",
+      "checksum": "C1C579B87F777D199936AC3472E87EC07E59A0B7B66927A5899BE0DC5E13F64C",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "http/awscli.amazonaws.com/awscli-exe-linux-aarch64-2.40.4.zip",
+      "checksum": "88961950FB3EF0B7190B40A1BCCAD0308B69186DBC575CB7C999B8C18959C635",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "http/awscli.amazonaws.com/awscli-exe-linux-x86_64-2.40.4.zip",
+      "checksum": "81F573C2A0ACE70CFB97AA4D014C17CBD605CB04CBAD09ADBC7AAF9C0979AE8E",
+      "algorithm": "sha256"
+    },
+    {
       "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.545.0/registry.yaml",
       "checksum": "6E24934C8017EE09F33FDAC422168AF4329C9BFAA6AFD388A363FB2526B5F40D",
       "algorithm": "sha256"
