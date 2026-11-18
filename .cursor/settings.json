@@ -116,5 +116,7 @@
     "**/.gitea/workflows/*.yaml",
     "**/.forgejo/workflows/*.yml",
     "**/.forgejo/workflows/*.yaml"
-  ]
+  ],
+  "claudeCode.preferredLocation": "panel",
+  "claudeCode.hideOnboarding": true
 }
