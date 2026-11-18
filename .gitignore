@@ -7,3 +7,9 @@ sheldon/plugins.lock
 
 # Auto-synced skills
 .agents/skills/synced/
+
+# Skills managed by AWS Agent Toolkit (`aws agent-toolkit add-skill` / `update-skill`)
+.agents/skills/amazon-bedrock/
+.agents/skills/aws-*/
+.agents/skills/launch-with-aws/
+.agents/skills/signing-in-to-aws/
