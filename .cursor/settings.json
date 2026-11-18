@@ -50,6 +50,11 @@
   "redhat.telemetry.enabled": true,
   "extensions.ignoreRecommendations": true,
 
+  // vibrancy / background は Cursor 本体のファイルをパッチする方式のため、
+  // 自動アップデートで本体が差し替わると透過が外れる。
+  // 更新は手動で行い、更新後に "Reload Vibrancy" を実行する。
+  "update.mode": "manual",
+
   // background - image
   "background.enabled": true,
   "background.fullscreen": {
