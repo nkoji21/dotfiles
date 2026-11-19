@@ -25,7 +25,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@611554c6f0137ba41c8dd15aca8bee82504ea461 # v4.1.1
         with:
-          aqua_version: v2.66.0 # Renovate: depName=aquaproj/aqua
+          aqua_version: v2.66.1 # Renovate: depName=aquaproj/aqua
 
       - name: Install security tools
         run: aqua i -l gitleaks zizmor
@@ -52,7 +52,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@611554c6f0137ba41c8dd15aca8bee82504ea461 # v4.1.1
         with:
-          aqua_version: v2.66.0 # Renovate: depName=aquaproj/aqua
+          aqua_version: v2.66.1 # Renovate: depName=aquaproj/aqua
 
       - name: Install actions tools
         run: aqua i -l actionlint pinact
