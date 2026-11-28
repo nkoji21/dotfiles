@@ -41,8 +41,8 @@ precmd() {
 alias vim="nvim"
 
 # モダンツール
-alias ls="eza -l --git --icons"
-alias la="eza -la --git --icons"
+alias ls="eza -l --git --icons=auto"
+alias la="eza -la --git --icons=auto"
 alias cat="bat --style=header,grid"
 
 # 42Tokyo
